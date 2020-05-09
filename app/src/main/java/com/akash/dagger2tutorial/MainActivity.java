@@ -5,7 +5,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.akash.dagger2tutorial.Car.Car;
-import com.akash.dagger2tutorial.Dagger.CarComponent;
+import com.akash.dagger2tutorial.Dagger.ActivityComponent;
+import com.akash.dagger2tutorial.Dagger.DieselEngineModule;
 
 import javax.inject.Inject;
 
@@ -18,7 +19,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        CarComponent component = ((MyApplication) getApplication()).getAppComponent();
+        ActivityComponent component = ((MyApplication) getApplication()).getAppComponent()
+                .getActivityComponent(new DieselEngineModule(150));
+
         // Normal dependency Injection
 //        car = component.getCar();
         // for field injection

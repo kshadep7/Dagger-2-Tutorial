@@ -1,21 +1,19 @@
 package com.akash.dagger2tutorial.Dagger;
 
 import com.akash.dagger2tutorial.Car.Car;
+import com.akash.dagger2tutorial.CustomPerActivityScope;
 import com.akash.dagger2tutorial.MainActivity;
 
-import javax.inject.Named;
-import javax.inject.Singleton;
+import dagger.Subcomponent;
 
-import dagger.BindsInstance;
-import dagger.Component;
-
-@Singleton
-@Component(modules = {WheelsModule.class, PetrolEngineModule.class})
-public interface CarComponent {
+@CustomPerActivityScope
+@Subcomponent(modules = {WheelsModule.class, DieselEngineModule.class})
+public interface ActivityComponent {
     Car getCar();
 
     void inject(MainActivity mainActivity);
 
+/*
     @Component.Builder
     interface Builder {
 
@@ -25,6 +23,9 @@ public interface CarComponent {
         @BindsInstance
         Builder engineCapacity(@Named("capacity") int capacity);
 
-        CarComponent build();
+        Builder appComponent(AppComponent appComponent);
+
+        ActivityComponent build();
     }
+*/
 }

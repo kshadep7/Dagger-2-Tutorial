@@ -1,12 +1,7 @@
 package com.akash.dagger2tutorial.Car;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
-@Singleton
 public class Driver {
-
-    @Inject
-    public Driver() {
-    }
+    // we don't own this class. this is third party class so constructor injection is possible.
+    // instead creating module this class
 }
+

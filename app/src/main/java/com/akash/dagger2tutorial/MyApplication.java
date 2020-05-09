@@ -2,23 +2,20 @@ package com.akash.dagger2tutorial;
 
 import android.app.Application;
 
-import com.akash.dagger2tutorial.Dagger.CarComponent;
-import com.akash.dagger2tutorial.Dagger.DaggerCarComponent;
+import com.akash.dagger2tutorial.Dagger.AppComponent;
+import com.akash.dagger2tutorial.Dagger.DaggerAppComponent;
 
 public class MyApplication extends Application {
 
-    private CarComponent component;
+    private AppComponent component;
 
     @Override
     public void onCreate() {
         super.onCreate();
-
-        component = DaggerCarComponent.builder()
-                .horsePower(150)
-                .engineCapacity(1000)
-                .build();
+        component = DaggerAppComponent.create();
     }
-    public CarComponent getAppComponent(){
+
+    public AppComponent getAppComponent() {
         return component;
     }
 }
